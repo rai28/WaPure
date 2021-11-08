@@ -1,6 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const userRouter = require("./routes/userControllers/userRetrive.js");
+const userAuthApis = require("./routes/userControllers/userAuthApis");
 const app = express();
 app.use(express.json());
 app.use(
@@ -24,6 +25,8 @@ mongoose
   });
 
 app.use("/api/user", userRouter);
+app.use("api/login", userAuthApis);
+userAuthApis(app);
 
 app.get("/", (req, res) => {
   res.send("Hello World!");
