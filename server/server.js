@@ -2,6 +2,8 @@ const express = require("express");
 const mongoose = require("mongoose");
 const userRouter = require("./routes/userControllers/userRetrive.js");
 const userAuthApis = require("./routes/userControllers/userAuthApis");
+const reportRouter = require("./routes/reportRouter");
+const paypalClientId = require("./config/keys").paypalClientId;
 const app = express();
 app.use(express.json());
 app.use(
@@ -9,6 +11,7 @@ app.use(
     extended: true,
   })
 );
+
 const db = require("./config/keys").mongoURI;
 
 mongoose
@@ -26,13 +29,14 @@ mongoose
 
 app.use("/api/user", userRouter);
 app.use("api/login", userAuthApis);
-userAuthApis(app);
-
-app.get("/", (req, res) => {
-  res.send("Hello World!");
+app.use("/api/reports", reportRouter);
+app.get("/api/config/paypal", (req, res) => {
+  res.send(paypalClientId);
 });
 
-const PORT = process.env.PORT || 3000;
+userAuthApis(app);
+
+const PORT = process.env.PORT || 4000;
 app.listen(PORT, () => {
   console.log(`Listening on  http://localhost:${PORT}`);
 });
