@@ -1,0 +1,46 @@
+@import url("https://fonts.googleapis.com/css2?family=Oxygen:wght@300;400;700&display=swap");
+
+.wrapper {
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(40rem, 16rem));
+  gap: 5rem;
+  justify-content: center;
+}
+
+.card {
+  overflow: hidden;
+  border: 2px solid rgb(155, 155, 155);
+  padding: 1rem;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+  width: 100%;
+  height: 470px;
+  margin-bottom: 5rem;
+}
+.card__image {
+  height: 24rem;
+  width: 100%;
+  object-fit: cover;
+}
+.card__title {
+  padding: 1rem;
+}
+.card__description {
+  padding: 0 1rem;
+}
+.know-btn {
+  /* align in center of card */
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+.card__btn {
+  padding: 1rem 2rem;
+  background-color: #75a644;
+  border: 1px solid #000000;
+  border-radius: 20px;
+}

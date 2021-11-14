@@ -1,0 +1,39 @@
+footer {
+  background: rgb(255, 228, 200);
+}
+.site-footer-div {
+  /* align all content in center */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* set height of footer */
+  height: 100px;
+  /* set width of footer */
+  width: 100%;
+  /* set font size of footer */
+  font-size: 1.5rem;
+  /* set text decoration of footer */
+  text-decoration: none;
+}
+
+.footer-text {
+  margin-left: 10px;
+  color: rgb(0, 0, 0);
+  font-size: 14px;
+  width: 500px;
+  font-weight: bold;
+}
+
+.footer-contact {
+  /* align in center */
+  display: flex;
+  justify-content: center;
+}
+.footer-contact-btn {
+  background-color: #4d9b39;
+  border: 1px solid #000;
+  border-radius: 10px;
+  padding: 15px;
+  margin-bottom: 2rem;
+  cursor: pointer;
+}
