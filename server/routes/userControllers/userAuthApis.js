@@ -11,17 +11,15 @@ const app = express();
 module.exports = function (app) {
   //post request for registration
   app.post("/api/register", async (req, res) => {
-    const { userName, email, password: plainTextPassword } = req.body;
+    const { name, email, password: plainTextPassword } = req.body;
     if (!email || typeof email !== "string") {
       return res
         .status(401)
         .json({ status: "error", message: "Invalid emails" });
     }
 
-    if (!userName || typeof userName !== "string") {
-      return res
-        .status(401)
-        .json({ status: "error", message: "Invalid username" });
+    if (!name || typeof name !== "string") {
+      return res.status(401).json({ status: "error", message: "Invalid name" });
     }
 
     if (!plainTextPassword || typeof plainTextPassword !== "string") {
@@ -40,11 +38,10 @@ module.exports = function (app) {
 
     try {
       var createdUser = await User.create({
-        userName,
+        name,
         email,
         password,
       });
-      console.log("User created success !!", createdUser);
     } catch (error) {
       if (error.code === 11000) {
         // duplicate key error
@@ -60,7 +57,7 @@ module.exports = function (app) {
     res.json({
       status: "ok",
       data: authToken,
-      userName: userName,
+      name: name,
       _id: createdUser._id,
       email: createdUser.email,
       isAdmin: createdUser.isAdmin,
@@ -93,12 +90,12 @@ module.exports = function (app) {
         .status(401)
         .json({ status: "error", message: "Invalid password" });
     }
-    const userName = user.userName;
+    const name = user.name;
     const authToken = generateToken(user);
     res.json({
       status: "ok",
       data: authToken,
-      userName: userName,
+      name: name,
       _id: user._id,
       email: user.email,
       isAdmin: user.isAdmin,
