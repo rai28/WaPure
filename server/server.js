@@ -34,6 +34,10 @@ app.get("/api/config/paypal", (req, res) => {
   res.send(paypalClientId);
 });
 
+app.get("/", (req, res) => {
+  res.send("The app is in working condition.");
+});
+
 userAuthApis(app);
 
 const PORT = process.env.PORT || 4000;
