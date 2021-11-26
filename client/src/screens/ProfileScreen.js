@@ -37,9 +37,6 @@ export default function ProfileScreen(props) {
       setName(user.name);
       setEmail(user.email);
     }
-    if (!userInfo) {
-      props.history.push("/signin");
-    }
   }, [dispatch, userInfo._id, user]);
 
   const submitHandler = (e) => {
