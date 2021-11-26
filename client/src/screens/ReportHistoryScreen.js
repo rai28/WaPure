@@ -42,9 +42,8 @@ export default function ReportHistoryScreen(props) {
                     {report.isPaid ? report.paidAt.substring(0, 10) : "No"}
                   </td>
                   <td>
-                    {" "}
-                    {report.isReportGenerated
-                      ? report.reportGeneratedAt.substring(0, 10)
+                    {report.isPaid
+                      ? "Report Generated"
                       : "Report Not Generated"}
                   </td>
                   <td>

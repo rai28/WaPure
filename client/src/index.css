@@ -667,3 +667,16 @@ a {
   border-radius: 10px;
   padding: 20px 40px;
 }
+.report-result-container {
+  margin-top: 5rem;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 70rem;
+  border: 2px solid black !important;
+}
+.certified-logo-png {
+  /* align in middle */
+  display: block;
+  margin-top: 2rem;
+  margin-left: 12rem;
+}

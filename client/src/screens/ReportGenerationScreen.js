@@ -5,14 +5,13 @@ import LoadingBox from "../components/LoadingBox";
 import MessageBox from "../components/MessageBox";
 import { detailsOrder, payOrder } from "../actions/reportActions";
 import axios from "axios";
+import certifiedlogo from "../assets/images/certifiedlogo.png";
 import { REPORT_PAY_RESET } from "../constants/reportConstants";
 export default function ReportGenerationScreen(props) {
   const orderId = props.match.params.id;
   const [sdkReady, setSdkReady] = useState(false);
   const orderDetails = useSelector((state) => state.orderDetails);
   const { report, loading, error } = orderDetails;
-  const userSignin = useSelector((state) => state.userSignin);
-  const { userInfo } = userSignin;
   const orderPay = useSelector((state) => state.orderPay);
   const {
     loading: loadingPay,
@@ -94,7 +93,8 @@ export default function ReportGenerationScreen(props) {
                 </p>
                 {report.isReportGenerated ? (
                   <MessageBox variant="success">
-                    Report Generated at {report.reportGeneratedAt}
+                    Report Generated at{" "}
+                    {report.paidAt.slice(0, 10).split("-").reverse().join("-")}
                   </MessageBox>
                 ) : (
                   <MessageBox variant="danger">Report Not Generated</MessageBox>
@@ -112,7 +112,153 @@ export default function ReportGenerationScreen(props) {
                   <MessageBox variant="danger">Not Paid</MessageBox>
                 )}
                 <h4> Report Results</h4>
-                <p></p>
+                <p>
+                  {/* if payment status is paid then show result */}
+                  {report.isPaid ? (
+                    <div>
+                      <table className="table table-bordered">
+                        <caption>
+                          <h4> Report Results</h4>
+                        </caption>
+                        <thead>
+                          <tr>
+                            <th>Property</th>
+                            <th>User Value</th>
+                            <th>Permissible Range</th>
+                            <th>Remarks</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>Hardness</td>
+                            <td>{report.reportFormContent.hardness}</td>
+                            <td>200 to 600</td>
+                            <td>
+                              {report.reportFormContent.hardness > 200 &&
+                              report.reportFormContent.hardness < 600
+                                ? "Pass"
+                                : "Fail"}
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>Total Dissolved Solids</td>
+                            <td>
+                              {report.reportFormContent.totalDissolvedSolids}
+                            </td>
+                            <td>0 - 20000</td>
+                            <td>
+                              {report.reportFormContent.totalDissolvedSolids >
+                                0 &&
+                              report.reportFormContent.totalDissolvedSolids <
+                                20000
+                                ? "Pass"
+                                : "Fail"}
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>Chloroamines</td>
+                            <td>{report.reportFormContent.chloroamines}</td>
+                            <td>0-10</td>
+                            <td>
+                              {report.reportFormContent.chloroamines > 0 &&
+                              report.reportFormContent.chloroamines < 10
+                                ? "Pass"
+                                : "Fail"}
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>Sulfates</td>
+                            <td>{report.reportFormContent.sulfates}</td>
+                            <td>200-4000</td>
+                            <td>
+                              {report.reportFormContent.sulfates > 200 &&
+                              report.reportFormContent.sulfates < 4000
+                                ? "Pass"
+                                : "Fail"}
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>Trihalomethanes</td>
+                            <td>{report.reportFormContent.trihalomethanes}</td>
+                            <td>0-80 </td>
+                            <td>
+                              {report.reportFormContent.trihalomethanes > 0 &&
+                              report.reportFormContent.trihalomethanes < 80
+                                ? "Pass"
+                                : "Fail"}
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>Organic Carbon</td>
+                            <td>{report.reportFormContent.organicCarbon}</td>
+                            <td>0-13</td>
+                            <td>
+                              {report.reportFormContent.organicCarbon > 0 &&
+                              report.reportFormContent.organicCarbon < 13
+                                ? "Pass"
+                                : "Fail"}
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>Turbidity</td>
+                            <td>{report.reportFormContent.turbidity}</td>
+                            <td>0-4</td>
+                            <td>
+                              {report.reportFormContent.turbidity > 0 &&
+                              report.reportFormContent.turbidity < 4
+                                ? "Pass"
+                                : "Fail"}
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                      <div className="report-result-container">
+                        {report.reportFormContent.hardness > 200 &&
+                        report.reportFormContent.hardness < 600 &&
+                        report.reportFormContent.totalDissolvedSolids > 0 &&
+                        report.reportFormContent.totalDissolvedSolids < 20000 &&
+                        report.reportFormContent.chloroamines > 0 &&
+                        report.reportFormContent.chloroamines < 10 &&
+                        report.reportFormContent.sulfates > 200 &&
+                        report.reportFormContent.sulfates < 4000 &&
+                        report.reportFormContent.trihalomethanes > 0 &&
+                        report.reportFormContent.trihalomethanes < 80 &&
+                        report.reportFormContent.organicCarbon > 0 &&
+                        report.reportFormContent.organicCarbon < 13 &&
+                        report.reportFormContent.turbidity > 0 &&
+                        report.reportFormContent.turbidity < 4 ? (
+                          <MessageBox variant="success">
+                            <div className="final-result-output">
+                              <h4> Report Passed</h4>
+                              <p> It's safe to drink this water.</p>
+                            </div>
+                          </MessageBox>
+                        ) : (
+                          <MessageBox variant="danger">
+                            <div className="final-result-output">
+                              <h4> Report is Failed</h4>
+                              <p> Water Quality is not good</p>
+                            </div>
+                          </MessageBox>
+                        )}
+                      </div>
+                      <div className="certified-logo-png">
+                        <img
+                          src={certifiedlogo}
+                          alt="certified logo"
+                          width="100"
+                          height="100"
+                        />
+                      </div>
+                    </div>
+                  ) : (
+                    <div>
+                      <MessageBox variant="danger">
+                        Payment Not Successful Yet
+                      </MessageBox>
+                    </div>
+                  )}
+                </p>
               </div>
             </li>
           </ul>
@@ -130,7 +276,7 @@ export default function ReportGenerationScreen(props) {
           <div className="payment-card card-body">
             <ul>
               <li>
-                <h2>report Summary</h2>
+                <h2>Total Price</h2>
               </li>
               <li>
                 <div className="row">
