@@ -35,7 +35,7 @@ app.get("/api/config/paypal", (req, res) => {
 });
 
 app.get("/", (req, res) => {
-  res.send("The app is in working condition.");
+  res.send("The app is working.");
 });
 
 userAuthApis(app);
