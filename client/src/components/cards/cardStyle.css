@@ -44,3 +44,7 @@
   border: 1px solid #000000;
   border-radius: 20px;
 }
+.know-btn a {
+  color: #000000;
+  text-decoration: none;
+}

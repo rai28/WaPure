@@ -386,11 +386,11 @@ form label {
   padding-bottom: 0.5rem;
 }
 
-.signin-icon {
+.boypng-icon {
   margin: 1rem;
   /* create a circular border */
   border-radius: 50%;
-  border: 0.1rem solid #a4a4a4;
+  border: 0.2rem solid #1f1f1f;
   padding: 0.5rem;
 }
 
@@ -679,4 +679,25 @@ a {
   display: block;
   margin-top: 2rem;
   margin-left: 12rem;
+}
+
+.signup-div {
+  margin: 1rem 2rem;
+  padding: 0.5rem;
+  border: 3px solid black !important;
+  background-color: #000000;
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  color: rgb(255, 255, 255);
+  font-weight: bolder;
+  transition: 0.5s;
+}
+.signup-div:hover {
+  transform: scale(1.1);
+}
+.below-form-note {
+  font-weight: bolder;
+}
+.below-form-note a {
+  border-bottom: 2px solid #000000;
 }

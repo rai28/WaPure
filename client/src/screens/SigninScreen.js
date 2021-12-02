@@ -66,7 +66,7 @@ export default function SigninScreen(props) {
         </div>
         <div>
           <label />
-          <div>
+          <div className="below-form-note">
             New to our site?{" "}
             <Link to={`/register?redirect=${redirect}`}>Register Here</Link>
           </div>

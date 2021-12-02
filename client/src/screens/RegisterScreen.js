@@ -103,7 +103,7 @@ export default function RegisterScreen(props) {
         </div>
         <div>
           <label />
-          <div>
+          <div className="below-form-note">
             Already a user ?{" "}
             <Link to={`/signin?redirect=${redirect}`}>Login Here</Link>
           </div>

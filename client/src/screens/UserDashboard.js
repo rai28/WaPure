@@ -14,7 +14,7 @@ export default function UserDashboard() {
           Hello <span className="r-user-name">{userInfo.name}</span>
         </h2>
         <p className="greet-dashboard-msg">Glad to see you again!</p>
-        <div className="user-name-div">How can we help you?</div>
+        <div className="user-name-div">How can we help you ?</div>
         {/* create two buttons in same line */}
         <div className="user-dashboard-buttons">
           <Link to="/reports/history">
