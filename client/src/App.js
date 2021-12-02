@@ -15,7 +15,6 @@ import ReportGenerationScreen from "./screens/ReportGenerationScreen";
 import ReportHistoryScreen from "./screens/ReportHistoryScreen";
 import ContactUsScreen from "./screens/ContactUsScreen";
 import drinkWaterPng from "./assets/images/drink-water.png";
-import loginpng from "./assets/images/login.png";
 import boypng from "./assets/images/boy.png";
 
 function App() {
