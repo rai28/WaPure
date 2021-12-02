@@ -49,7 +49,7 @@ function App() {
                       height="50px"
                       width="50px"
                       alt="signin"
-                      className="signin-icon"
+                      className="boypng-icon"
                     />{" "}
                   </Link>
                   <ul className="dropdown-content">
@@ -64,14 +64,10 @@ function App() {
                   </ul>
                 </div>
               ) : (
-                <Link to="/signin">
-                  <img
-                    src={loginpng}
-                    height="50px"
-                    width="50px"
-                    alt="signin"
-                    className="signin-icon"
-                  />
+                <Link to="/register">
+                  <div className="signup-div">
+                    <p className="signup-text">Sign Up</p>
+                  </div>
                 </Link>
               )}
             </div>
